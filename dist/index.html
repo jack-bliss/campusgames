@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Games</title>
+</head>
+<body>
+    <canvas
+        style="margin: 0 auto; display: block;"
+        width="600"
+        height="600"
+        id="game-canvas"></canvas>
+</body>
+<script src="canvas.js"></script>
+<script src="input.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+
+var gameName = 'zoomerang';
+
+var socket = io();
+
+var socketID, render, resources = {};
+
+socket.emit('start', gameName);
+
+new Promise(function(resolve, reject){
+    socket.on('ready', function(data){
+        socketID = data.id;
+        eval('render = '+data.render);
+        resolve(data.resources);
+    });
+}).then(function(resos){
+    var ps = [];
+    if(resos.hasOwnProperty('images')){
+        resources.images = {};
+        for(var x in resos.images){
+            var img = new Image();
+            resources.images[x] = img;
+            ps.push(new Promise(function(resolve, reject){
+                img.onload = function(){
+                    resolve(x);
+                }
+            }));
+            img.src = '/resources/'+gameName+'/images/'+resos.images[x];
+        }
+    }
+    if(resos.hasOwnProperty('static')){
+        resources.static = resos.static;
+    }
+    return Promise.all(ps);
+}).then(function(){
+    socket.emit('loaded', socketID);
+});
+
+socket.on('error', function(msg){
+    console.error(msg);
+});
+
+socket.on('state', function(state){
+    render(Canvas, state, resources);
+    socket.emit('input', {
+        id: socketID,
+        input: Input
+    });
+});
+
+</script>
+</html>
