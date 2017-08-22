@@ -67,16 +67,16 @@ var Zoomerang = {
                             } else if(parts[0] === 'state'){
                                 s.at = parts[1];
                             }
+                            if(s.aim.power < 0) {
+                                s.aim.power = 0;
+                            } else if(s.aim.power > 100){
+                                s.aim.power = 100;
+                            }
                             s.path = Zoomerang.util.tracePath(s.aim);
                             s.click_counter = 0;
                         }
                     }
                 }
-            }
-            if(s.aim.power < 0) {
-                s.aim.power = 0;
-            } else if(s.aim.power > 100){
-                s.aim.power = 100;
             }
         } else if(s.at === 'throwing'){
 
@@ -437,8 +437,8 @@ var Zoomerang = {
     watch: {},
     util: {
         pickTargetSpot: function(KS){
-            var x_range = [Zoomerang.resources.static.play_field.x[0]+10, Zoomerang.resources.static.play_field.x[1]-10]
-            var y_range = [Zoomerang.resources.static.play_field.y[0]+10, Zoomerang.resources.static.play_field.y[1]-10]
+            var x_range = [Zoomerang.resources.static.play_field.x[0]+40, Zoomerang.resources.static.play_field.x[1]-40]
+            var y_range = [Zoomerang.resources.static.play_field.y[0]+40, Zoomerang.resources.static.play_field.y[1]-40]
             return new KS.Vector2(KS.randomInRange(x_range), KS.randomInRange(y_range));
         },
         calcLaunch: function(aim){
