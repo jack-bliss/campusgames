@@ -2,7 +2,7 @@ const Snake = {
     // setup is a function that returns the initial state of the game
     resources: {
         images: {
-            death: 'death.svg'
+            death: '/resources/snake/death.svg'
         }
     },
     render: function(c, s, r) {

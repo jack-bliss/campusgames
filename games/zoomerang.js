@@ -24,7 +24,11 @@ var Zoomerang = {
                 w: 10,
                 h: 10
             },
+            boomerangle: 0,
             score: 0,
+            score_timer: 100,
+            score_counter: 0,
+            round: 1,
             path: [],
             buttonHover: '',
             prevMouse: false,
@@ -39,6 +43,13 @@ var Zoomerang = {
             s.at = 'aiming';
         } else if(s.at === 'aiming'){
             s.buttonHover = '';
+
+            s.score_counter += dt;
+            if(s.score_counter >= 500){
+                s.score_timer--;
+                s.score_counter = 0;
+            }
+
             for(var btype in Zoomerang.resources.static.buttons){
                 var bclass = Zoomerang.resources.static.buttons[btype];
                 for(var bname in bclass.sub){
@@ -72,7 +83,7 @@ var Zoomerang = {
                             } else if(s.aim.power > 100){
                                 s.aim.power = 100;
                             }
-                            s.path = Zoomerang.util.tracePath(s.aim);
+                            s.path = Zoomerang.util.tracePath(s.aim, s.round);
                             s.click_counter = 0;
                         }
                     }
@@ -81,6 +92,8 @@ var Zoomerang = {
         } else if(s.at === 'throwing'){
 
             // update position
+
+            s.boomerangle += s.aim.power/80;
 
             s.boomerang.dx += s.boomerang.ddx * (dt/1000);
             s.boomerang.dy += s.boomerang.ddy * (dt/1000);
@@ -105,9 +118,6 @@ var Zoomerang = {
                 };
                 return !KS.boxCollide(s.boomerang, tgbox);
             });
-            if(s.targets.length < l){
-                s.score++;
-            }
 
             // clear if out of bounds
 
@@ -147,16 +157,29 @@ var Zoomerang = {
                 ddx: 0,
                 ddy: 0
             };
-            s.score -= s.targets.length === 0 ? 0 : 1;
-            while(s.targets.length < 2){
-                s.targets.push(Zoomerang.util.pickTargetSpot(KS));
+
+            if(s.targets.length !== 0){
+                s.at = 'start';
+            } else {
+                s.round++;
+                s.score += s.score_timer;
+                s.score_counter = 0;
+                s.score_timer = 100;
+                while(s.targets.length < 2){
+                    s.targets.push(Zoomerang.util.pickTargetSpot(KS));
+                }
             }
 
         } else if(s.prevAt === 'start' && s.at === 'aiming'){
 
             // initial
 
-            s.path = Zoomerang.util.tracePath(s.aim);
+            s.score = 0;
+            s.round = 1;
+            s.score_timer = 100;
+            s.score_counter = 0;
+
+            s.path = Zoomerang.util.tracePath(s.aim, s.round);
 
         }
 
@@ -179,7 +202,8 @@ var Zoomerang = {
             draw.write(300, 200, "Press the space bar to begin!");
         } else if(state.at === 'aiming' || state.at === 'throwing'){
 
-            draw.write(580, 20, state.score);
+            draw.write(330, 530, state.score);
+            draw.write(330, 550, state.score_timer);
 
             if(state.at === 'aiming'){
                 draw.ctx.beginPath();
@@ -204,17 +228,12 @@ var Zoomerang = {
             // draw target
 
             for(var i = 0; i < state.targets.length; i++) {
-                draw.rect({
-                    x: state.targets[i].x,
-                    y: state.targets[i].y,
-                    w: resources.static.target.w,
-                    h: resources.static.target.h
-                }, 'orange');
+                draw.image(resources.images.target, state.targets[i].x, state.targets[i].y, resources.static.target.w, resources.static.target.h);
             }
 
             // draw boomerang
 
-            draw.rect(state.boomerang);
+            draw.image(resources.images.boomerang, state.boomerang.x, state.boomerang.y, state.boomerang.w, state.boomerang.h, state.boomerangle);
 
             // draw buttons
             for(var btype in resources.static.buttons){
@@ -267,7 +286,7 @@ var Zoomerang = {
             buttons: {
                 throw: {
                     x: 330,
-                    y: 480,
+                    y: 460,
                     sub: {
                         throw: {
                             x: 0,
@@ -432,6 +451,10 @@ var Zoomerang = {
                     }
                 }
             }
+        },
+        images: {
+            boomerang: 'boomerang.svg',
+            target: 'target.svg'
         }
     },
     watch: {},
@@ -446,11 +469,15 @@ var Zoomerang = {
             return {
                 dx: aim.power * powerScale * Math.sin(aim.angle/30),
                 dy: aim.power * -1 * powerScale * Math.cos(aim.angle/30),
-                ddx: aim.power * -1 * aim.curve * 0.5 * Math.sign(aim.angle),
+                ddx: aim.power * -1 * aim.curve * 0.2 * Math.sign(aim.angle),
                 ddy: (powerScale * aim.return)
             }
         },
-        tracePath: function(aim){
+        tracePath: function(aim, round){
+            var maxlength = 800 - (round * 50);
+            if(maxlength <= 0){
+                return [];
+            }
             var np = {
                 x: Zoomerang.resources.static.boom_start.x,
                 y: Zoomerang.resources.static.boom_start.y
@@ -460,11 +487,10 @@ var Zoomerang = {
             var oob = false;
 
             var launch = Zoomerang.util.calcLaunch(aim);
-            var iter = 0;
+            var length = 0;
 
 
-            while(!oob && iter < 250){
-                iter++;
+            while(!oob && length < maxlength){
                 r.push(np);
 
                 launch.dx += launch.ddx * (dtE/1000);
@@ -473,6 +499,7 @@ var Zoomerang = {
                     x: np.x + launch.dx * (dtE/1000),
                     y: np.y + launch.dy * (dtE/1000)
                 };
+                length += Math.sqrt(Math.pow(np.x - r[r.length-1].x, 2) + Math.pow(np.y - r[r.length-1].y, 2))
 
                 if(np.x < Zoomerang.resources.static.play_field.x[0] || np.x > Zoomerang.resources.static.play_field.x[1]){
                     oob = true;

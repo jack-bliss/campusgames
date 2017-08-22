@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>target</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="target">
+            <circle id="Oval" fill="#FF0000" cx="10" cy="10" r="10"></circle>
+            <circle id="Oval-2" fill="#FFFFFF" cx="10" cy="10" r="8"></circle>
+            <circle id="Oval-3" fill="#FF6F00" cx="10" cy="10" r="6"></circle>
+            <circle id="Oval-4" fill="#FFFFFF" cx="10" cy="10" r="4"></circle>
+            <circle id="Oval-5" fill="#FFE600" cx="10" cy="10" r="2"></circle>
+        </g>
+    </g>
+</svg>

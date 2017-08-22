@@ -49,6 +49,13 @@
 
             ctx.fillStyle = prevStyle;
             ctx.font = prevFont;
+        },
+        image: function(src, x, y, w, h, theta){
+            ctx.translate(x, y);
+            ctx.rotate(theta);
+            ctx.drawImage(src, -w/2, -h/2, w, h);
+            ctx.rotate(-theta);
+            ctx.translate(-x, -y);
         }
     };
     root['Canvas'] = Canvas;
