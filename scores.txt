@@ -1,1 +1,1 @@
-[{"name":"jack","score":70,"game":"snake"}]
+[{"name":"jack","score":70,"game":"snake"},{"name":"jack","game":"sneakypeter","score":63}]

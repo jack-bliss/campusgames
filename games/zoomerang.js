@@ -32,6 +32,7 @@ var Zoomerang = {
             path: [],
             buttonHover: '',
             prevMouse: false,
+            prevSpace: false,
             click_counter: 0
         }
     },
@@ -39,9 +40,23 @@ var Zoomerang = {
         var s = Object.assign({}, state);
 
         // state progression
-        if(s.at === 'start' && input.space){
+        if((s.at === 'start' || s.at === 'retry') && input.space){
+
+            s.score = 0;
+            s.round = 1;
+            s.score_timer = 100;
+            s.score_counter = 0;
+
+            s.path = Zoomerang.util.tracePath(s.aim, s.round);
+
             s.at = 'aiming';
+
         } else if(s.at === 'aiming'){
+
+            if(input.space && s.prevSpace === false){
+                s.at = 'throwing';
+            }
+
             s.buttonHover = '';
 
             s.score_counter += dt;
@@ -159,7 +174,7 @@ var Zoomerang = {
             };
 
             if(s.targets.length !== 0){
-                s.at = 'start';
+                s.at = 'retry';
             } else {
                 s.round++;
                 s.score += s.score_timer;
@@ -170,21 +185,11 @@ var Zoomerang = {
                 }
             }
 
-        } else if(s.prevAt === 'start' && s.at === 'aiming'){
-
-            // initial
-
-            s.score = 0;
-            s.round = 1;
-            s.score_timer = 100;
-            s.score_counter = 0;
-
-            s.path = Zoomerang.util.tracePath(s.aim, s.round);
-
         }
 
         s.prevAt = s.at;
         s.prevMouse = input.mouse.click;
+        s.prevSpace = input.space;
 
         return s;
     },
@@ -200,6 +205,10 @@ var Zoomerang = {
         });
         if(state.at === 'start'){
             draw.write(300, 200, "Press the space bar to begin!");
+        } else if(state.at === 'retry'){
+            draw.write(300, 200, "You missed!");
+            draw.write(300, 250, "You scored " + state.score + " points");
+            draw.write(300, 300, "Press the space bar to try again");
         } else if(state.at === 'aiming' || state.at === 'throwing'){
 
             draw.write(330, 530, state.score);
@@ -345,7 +354,7 @@ var Zoomerang = {
                             y: 30,
                             w: 16,
                             h: 25,
-                            text: '↑',
+                            text: '>',
                             click: 'angle|up'
                         },
                         down: {
@@ -353,7 +362,7 @@ var Zoomerang = {
                             y: 60,
                             w: 16,
                             h: 25,
-                            text: '↓',
+                            text: '<',
                             click: 'angle|down'
                         },
                         jumpup: {
@@ -361,7 +370,7 @@ var Zoomerang = {
                             y: 30,
                             w: 24,
                             h: 25,
-                            text: '↑↑',
+                            text: '>>',
                             click: 'angle|jumpup'
                         },
                         jumpdown: {
@@ -369,7 +378,7 @@ var Zoomerang = {
                             y: 60,
                             w: 24,
                             h: 25,
-                            text: '↓↓',
+                            text: '<<',
                             click: 'angle|jumpdown'
                         }
                     }
@@ -457,7 +466,16 @@ var Zoomerang = {
             target: 'target.svg'
         }
     },
-    watch: {},
+    watch: {
+        at: {
+            transition: ['throwing', 'retry'],
+            then: function(state){
+                return {
+                    submit: ['jack', 'sneakypeter', state.score]
+                }
+            }
+        }
+    },
     util: {
         pickTargetSpot: function(KS){
             var x_range = [Zoomerang.resources.static.play_field.x[0]+40, Zoomerang.resources.static.play_field.x[1]-40]
