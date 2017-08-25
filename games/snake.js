@@ -98,7 +98,7 @@ const Snake = {
         drawRectWithOffset('green', xsize * s.fruit.x, ysize * s.fruit.y, xsize, ysize);
 
         for (var i = 0; i < s.walls.length; i++) {
-            c.ctx.drawImage(r.images.death, offset.x + (xsize * s.walls[i].x), offset.y + (ysize * s.walls[i].y), xsize, ysize);
+            drawRectWithOffset('red', (xsize * s.walls[i].x), (ysize * s.walls[i].y), xsize, ysize);
         }
 
         c.ctx.strokeStyle = 'black';

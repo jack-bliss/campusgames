@@ -20,10 +20,17 @@ const port = process.env.PORT || 3001;
 
 let players = {};
 
+var c = 0;
+
 io.on('connection', function(socket){
     let GameFuncs;
-    socket.on('start', function(game){
-        GameFuncs = require('./games/'+game+'.js');
+
+    console.log('connected');
+
+    socket.on('start', function(info){
+        console.log('received connection, sending '+info.game+' to '+socket.id);
+        GameFuncs = require('./games/'+info.game+'.js');
+        console.log(GameFuncs);
         players[socket.id] = {
             update: GameFuncs.update,
             watch: GameFuncs.watch,
@@ -34,7 +41,9 @@ io.on('connection', function(socket){
                 }
             }, 1000/60),
             running: false,
-            prevTime: Date.now()
+            prevTime: Date.now(),
+            game: info.game,
+            channel: info.channel
         };
         io.sockets.connected[socket.id].emit('ready', {
             id: socket.id,
@@ -44,6 +53,7 @@ io.on('connection', function(socket){
         });
     });
     socket.on('loaded', function(socketID){
+        console.log('loaded');
         players[socketID].running = true;
     });
     socket.on('input', function(data){
@@ -74,6 +84,7 @@ io.on('connection', function(socket){
         }
     });
     socket.on('disconnect', function(){
+        console.log('disconnected');
         if(players.hasOwnProperty(socket.id)){
             let player = players[socket.id];
             clearInterval(player.inputInterval);

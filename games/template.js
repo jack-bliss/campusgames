@@ -1,10 +1,10 @@
 const GameName = {
-    setup: function(){
+    setup: function(KS){
         return {
 
         }
     },
-    update: function(state, input, dt){
+    update: function(state, input, dt, KS){
         var s = Object.assign({}, state);
 
         return s;
@@ -17,4 +17,4 @@ const GameName = {
     util: {}
 };
 
-module.expors = GameName;
+module.exports = GameName;
