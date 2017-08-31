@@ -2,7 +2,7 @@ const Snake = {
     // setup is a function that returns the initial state of the game
     resources: {
         images: {
-            death: '/resources/snake/death.svg'
+            death: 'death.png'
         }
     },
     render: function(c, s, r) {
@@ -98,14 +98,14 @@ const Snake = {
         drawRectWithOffset('green', xsize * s.fruit.x, ysize * s.fruit.y, xsize, ysize);
 
         for (var i = 0; i < s.walls.length; i++) {
-            drawRectWithOffset('red', (xsize * s.walls[i].x), (ysize * s.walls[i].y), xsize, ysize);
+            c.image(r.images.death, (xsize * s.walls[i].x) + (xsize/2) + offset.x, (ysize * s.walls[i].y) + (ysize/2) + offset.y, xsize, ysize, 0);
         }
 
         c.ctx.strokeStyle = 'black';
         var border_dimen = {
             w: c.elm.width - (offset.x * 2),
             h: c.elm.height - (offset.y * 2)
-        }
+        };
         c.ctx.strokeRect(offset.x, offset.y, border_dimen.w, border_dimen.h);
 
         if (s.at === 'ready' || s.at === 'dead') {

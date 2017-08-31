@@ -462,8 +462,8 @@ var Zoomerang = {
             }
         },
         images: {
-            boomerang: 'boomerang.svg',
-            target: 'target.svg'
+            boomerang: 'boomerang.png',
+            target: 'target.png'
         }
     },
     watch: {

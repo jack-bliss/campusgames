@@ -23,7 +23,9 @@ var socket = io();
 
 var socketID, render, resources = {};
 
-socket.emit('start', gameName);
+socket.emit('start', {
+    game: gameName
+});
 
 new Promise(function(resolve, reject){
     socket.on('ready', function(data){
@@ -31,23 +33,20 @@ new Promise(function(resolve, reject){
         eval('render = '+data.render);
         resolve(data.resources);
     });
-}).then(function(resos){
+}).then(function(resos) {
     var ps = [];
-    if(resos.hasOwnProperty('images')){
-        resources.images = {};
-        for(var x in resos.images){
-            var img = new Image();
-            resources.images[x] = img;
+    resources = resos;
+    for (var x in resources.images) {
+        (function(name){
+            var src = resources.images[name];
+            resources.images[name] = new Image();
             ps.push(new Promise(function(resolve, reject){
-                img.onload = function(){
-                    resolve(x);
+                resources.images[name].onload = function () {
+                    resolve(true);
                 }
             }));
-            img.src = '/resources/'+gameName+'/images/'+resos.images[x];
-        }
-    }
-    if(resos.hasOwnProperty('static')){
-        resources.static = resos.static;
+            resources.images[name].src = src;
+        })(x);
     }
     return Promise.all(ps);
 }).then(function(){

@@ -28,9 +28,7 @@ io.on('connection', function(socket){
     console.log('connected');
 
     socket.on('start', function(info){
-        console.log('received connection, sending '+info.game+' to '+socket.id);
-        GameFuncs = require('./games/'+info.game+'.js');
-        console.log(GameFuncs);
+        GameFuncs = require('./games/'+info.game+'/'+info.game+'.js');
         players[socket.id] = {
             update: GameFuncs.update,
             watch: GameFuncs.watch,
@@ -45,11 +43,35 @@ io.on('connection', function(socket){
             game: info.game,
             channel: info.channel
         };
-        io.sockets.connected[socket.id].emit('ready', {
-            id: socket.id,
-            render: GameFuncs.render.toString(),
-            resources: GameFuncs.resources,
-            state: players[socket.id].state
+        var resos = {};
+        if(GameFuncs.resources.hasOwnProperty('static')){
+            resos.static = GameFuncs.resources.static;
+        }
+        var prom;
+        if(GameFuncs.resources.hasOwnProperty('images')){
+            var ps = [];
+            resos.images = {};
+            for(var img in GameFuncs.resources.images){
+                (function(name){
+                    ps.push(new Promise(function(resolve, reject){
+                         fs.readFile('./games/'+info.game+'/images/'+GameFuncs.resources.images[name], function(err, data){
+                             resos.images[name] = 'data:image/png;base64,' + (new Buffer(data).toString('base64'));
+                             resolve(true);
+                         });
+                    }));
+                })(img);
+            }
+            prom = Promise.all(ps);
+        } else {
+            prom = Promise.resolve(true);
+        }
+        prom.then(function(){
+            io.sockets.connected[socket.id].emit('ready', {
+                id: socket.id,
+                render: GameFuncs.render.toString(),
+                resources: resos,
+                state: players[socket.id].state
+            });
         });
     });
     socket.on('loaded', function(socketID){
