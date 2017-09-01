@@ -18,8 +18,9 @@
 <script>
 
 var hash = window.location.hash.replace('#', '');
+var legal_games = ["snake", "tictactoe", "zoomerang"];
 var gameName;
-if(hash) {
+if(hash && legal_games.indexOf(hash) > -1) {
     gameName = hash;
 } else {
     gameName = 'snake';

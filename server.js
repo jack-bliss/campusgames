@@ -13,6 +13,8 @@ const database = __dirname + '/database/';
 
 const KineScript = require('./games/KineScript.js');
 
+const LegalGames = ["snake", "tictactoe", "zoomerang"];
+
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './dist')));
 
@@ -48,6 +50,9 @@ io.on('connection', function(socket){
     });
 
     socket.on('new_game', function(info){
+        if(LegalGames.indexOf(info.game) === -1){
+            return false;
+        }
         GameFuncs = require('./games/'+info.game+'/'+info.game+'.js');
         var myid = nextid;
         nextid++;
