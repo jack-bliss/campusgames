@@ -17,6 +17,7 @@ document.body.addEventListener('keyup', function(e){
 canvas.addEventListener('mousemove', function(e){
     Input.mouse.x = e.layerX;
     Input.mouse.y = e.layerY;
+    console.log(Input.mouse);
 });
 
 canvas.addEventListener('mousedown', function(e){
