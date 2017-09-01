@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f89d2c7-5b4b-48ec-ace3-23eaebe269a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/games/zoomerang/zoomerang.js" afterPath="$PROJECT_DIR$/games/zoomerang/zoomerang.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="53" column="25" lean-forward="false" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
+            <state relative-caret-position="206">
+              <caret line="66" column="27" lean-forward="false" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -58,10 +58,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="zoomerang.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="zoomerang.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/games/zoomerang/zoomerang.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
+            <state relative-caret-position="1051">
               <caret line="184" column="17" lean-forward="true" selection-start-line="184" selection-start-column="17" selection-end-line="184" selection-end-column="17" />
               <folding>
                 <element signature="e#41#979#0" expanded="false" />
@@ -147,8 +147,8 @@
         <option value="$PROJECT_DIR$/games/template.js" />
         <option value="$PROJECT_DIR$/games/tictactoe/tictactoe.js" />
         <option value="$PROJECT_DIR$/dist/index.html" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/games/zoomerang/zoomerang.js" />
+        <option value="$PROJECT_DIR$/server.js" />
       </list>
     </option>
   </component>
@@ -274,12 +274,12 @@
       <workItem from="1501772996107" duration="17983000" />
       <workItem from="1502286988677" duration="6754000" />
       <workItem from="1502802584184" duration="5714000" />
-      <workItem from="1502968553040" duration="47034000" />
+      <workItem from="1502968553040" duration="47185000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77489000" />
+    <option name="totallyTimeSpent" value="77640000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -678,22 +678,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="53" column="25" lean-forward="false" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/games/zoomerang/zoomerang.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
+        <state relative-caret-position="1051">
           <caret line="184" column="17" lean-forward="true" selection-start-line="184" selection-start-column="17" selection-end-line="184" selection-end-column="17" />
           <folding>
             <element signature="e#41#979#0" expanded="false" />
             <element signature="e#9615#15591#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="66" column="27" lean-forward="false" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -64,7 +64,7 @@ io.on('connection', function(socket){
             multiplayer: GameFuncs.multiplayer,
             inputInterval: setInterval(function(){
                 var game = games[myid];
-                if(game.running){
+                if(game && game.running){
 
                     const dt = Date.now() - game.prevTime;
                     var prev_state = game.state;
