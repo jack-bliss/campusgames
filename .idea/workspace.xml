@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f89d2c7-5b4b-48ec-ace3-23eaebe269a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/games/snake/snake.js" afterPath="$PROJECT_DIR$/games/snake/snake.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/games/zoomerang/zoomerang.js" afterPath="$PROJECT_DIR$/games/zoomerang/zoomerang.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="30" column="42" lean-forward="true" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+            <state relative-caret-position="252">
+              <caret line="73" column="51" lean-forward="false" selection-start-line="73" selection-start-column="51" selection-end-line="73" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -59,7 +58,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="snake.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="snake.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/games/snake/snake.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="465">
@@ -168,9 +167,9 @@
         <option value="$PROJECT_DIR$/games/template.js" />
         <option value="$PROJECT_DIR$/games/tictactoe/tictactoe.js" />
         <option value="$PROJECT_DIR$/dist/index.html" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/games/zoomerang/zoomerang.js" />
         <option value="$PROJECT_DIR$/games/snake/snake.js" />
+        <option value="$PROJECT_DIR$/server.js" />
       </list>
     </option>
   </component>
@@ -296,12 +295,12 @@
       <workItem from="1501772996107" duration="17983000" />
       <workItem from="1502286988677" duration="6754000" />
       <workItem from="1502802584184" duration="5714000" />
-      <workItem from="1502968553040" duration="47343000" />
+      <workItem from="1502968553040" duration="47484000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77798000" />
+    <option name="totallyTimeSpent" value="77939000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -680,14 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="30" column="42" lean-forward="true" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/games/template.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -723,6 +714,14 @@
             <element signature="e#8761#13686#0" expanded="false" />
             <element signature="e#13748#16283#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="73" column="51" lean-forward="false" selection-start-line="73" selection-start-column="51" selection-end-line="73" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>

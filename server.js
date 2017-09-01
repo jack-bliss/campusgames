@@ -68,8 +68,12 @@ io.on('connection', function(socket){
 
                     const dt = Date.now() - game.prevTime;
                     var prev_state = game.state;
-
-                    game.state = game.update(game.state, game.inputs, dt, KineScript);
+                    if(game.inputs.length === game.players.length && game.players.length !== 0){
+                        game.state = game.update(game.state, game.inputs, dt, KineScript);
+                    } else {
+                        game.prevTime = Date.now();
+                        return false;
+                    }
 
                     game.prevTime = Date.now();
 
