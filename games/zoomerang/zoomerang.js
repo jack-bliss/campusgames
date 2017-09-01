@@ -529,7 +529,25 @@ var Zoomerang = {
 
             return r;
         }
-    }
+    },
+    multiplayer: {
+        accept: function(state, players){
+            // function that returns whether or not the game is accepting new players
+            return false;
+        },
+        join: function(state, players){
+            // function that changes the state when a new player joins
+            var s = Object.assign({}, state);
+
+            return s;
+        },
+        leave: function(state, players){
+            // function that changes the state when a player leaves
+            var s = Object.assign({}, state);
+
+            return s;
+        }
+    },
 
 };
 

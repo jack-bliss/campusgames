@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f89d2c7-5b4b-48ec-ace3-23eaebe269a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/games/snake/snake.js" afterPath="$PROJECT_DIR$/games/snake/snake.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/games/zoomerang/zoomerang.js" afterPath="$PROJECT_DIR$/games/zoomerang/zoomerang.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="66" column="27" lean-forward="false" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
+            <state relative-caret-position="99">
+              <caret line="30" column="42" lean-forward="true" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -58,14 +59,35 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="snake.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/games/snake/snake.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="412" column="6" lean-forward="false" selection-start-line="412" selection-start-column="6" selection-end-line="412" selection-end-column="6" />
+              <folding>
+                <element signature="e#199#7435#0" expanded="false" />
+                <element signature="e#7448#7679#0" expanded="false" />
+                <element signature="e#7702#8614#0" expanded="false" />
+                <element signature="e#8761#13686#0" expanded="false" />
+                <element signature="e#13748#16283#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="zoomerang.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/games/zoomerang/zoomerang.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1051">
-              <caret line="184" column="17" lean-forward="true" selection-start-line="184" selection-start-column="17" selection-end-line="184" selection-end-column="17" />
+            <state relative-caret-position="360">
+              <caret line="549" column="6" lean-forward="false" selection-start-line="549" selection-start-column="6" selection-end-line="549" selection-end-column="6" />
               <folding>
                 <element signature="e#41#979#0" expanded="false" />
+                <element signature="e#1024#6243#0" expanded="false" />
+                <element signature="e#6289#9580#0" expanded="false" />
+                <element signature="e#9597#15699#0" expanded="false" />
                 <element signature="e#9615#15591#0" expanded="false" />
+                <element signature="e#15712#15947#0" expanded="false" />
+                <element signature="e#15959#18059#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -74,8 +96,8 @@
       <file leaf-file-name="template.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/games/template.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="9" lean-forward="false" selection-start-line="24" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+            <state relative-caret-position="195">
+              <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="31" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -143,12 +165,12 @@
         <option value="$PROJECT_DIR$/games/zoomerang.js" />
         <option value="$PROJECT_DIR$/games/simple.js" />
         <option value="$PROJECT_DIR$/games/snake.js" />
-        <option value="$PROJECT_DIR$/games/snake/snake.js" />
         <option value="$PROJECT_DIR$/games/template.js" />
         <option value="$PROJECT_DIR$/games/tictactoe/tictactoe.js" />
         <option value="$PROJECT_DIR$/dist/index.html" />
-        <option value="$PROJECT_DIR$/games/zoomerang/zoomerang.js" />
         <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/games/zoomerang/zoomerang.js" />
+        <option value="$PROJECT_DIR$/games/snake/snake.js" />
       </list>
     </option>
   </component>
@@ -274,12 +296,12 @@
       <workItem from="1501772996107" duration="17983000" />
       <workItem from="1502286988677" duration="6754000" />
       <workItem from="1502802584184" duration="5714000" />
-      <workItem from="1502968553040" duration="47185000" />
+      <workItem from="1502968553040" duration="47343000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77640000" />
+    <option name="totallyTimeSpent" value="77798000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -310,7 +332,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -616,26 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/games/snake/snake.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2616">
-          <caret line="176" column="22" lean-forward="false" selection-start-line="176" selection-start-column="22" selection-end-line="176" selection-end-column="22" />
-          <folding>
-            <element signature="e#199#7435#0" expanded="false" />
-            <element signature="e#7448#7679#0" expanded="false" />
-            <element signature="e#7702#8614#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/games/template.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="9" lean-forward="false" selection-start-line="24" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/games/KineScript.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -678,22 +680,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="30" column="42" lean-forward="true" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/games/template.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="31" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/games/zoomerang/zoomerang.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1051">
-          <caret line="184" column="17" lean-forward="true" selection-start-line="184" selection-start-column="17" selection-end-line="184" selection-end-column="17" />
+        <state relative-caret-position="360">
+          <caret line="549" column="6" lean-forward="false" selection-start-line="549" selection-start-column="6" selection-end-line="549" selection-end-column="6" />
           <folding>
             <element signature="e#41#979#0" expanded="false" />
+            <element signature="e#1024#6243#0" expanded="false" />
+            <element signature="e#6289#9580#0" expanded="false" />
+            <element signature="e#9597#15699#0" expanded="false" />
             <element signature="e#9615#15591#0" expanded="false" />
+            <element signature="e#15712#15947#0" expanded="false" />
+            <element signature="e#15959#18059#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
+    <entry file="file://$PROJECT_DIR$/games/snake/snake.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="66" column="27" lean-forward="false" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
-          <folding />
+        <state relative-caret-position="465">
+          <caret line="412" column="6" lean-forward="false" selection-start-line="412" selection-start-column="6" selection-end-line="412" selection-end-column="6" />
+          <folding>
+            <element signature="e#199#7435#0" expanded="false" />
+            <element signature="e#7448#7679#0" expanded="false" />
+            <element signature="e#7702#8614#0" expanded="false" />
+            <element signature="e#8761#13686#0" expanded="false" />
+            <element signature="e#13748#16283#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
