@@ -17,7 +17,13 @@
 
 <script>
 
-var gameName = 'tictactoe';
+var hash = window.location.hash.replace('#', '');
+var gameName;
+if(hash) {
+    gameName = hash;
+} else {
+    gameName = 'snake';
+}
 
 var socket = io();
 
