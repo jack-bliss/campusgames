@@ -17,19 +17,27 @@
 
 <script>
 
-var gameName = 'zoomerang';
+var gameName = 'tictactoe';
 
 var socket = io();
 
-var socketID, render, resources = {};
+var gameid, socketID, render, resources = {};
 
-socket.emit('start', {
-    game: gameName
+socket.on('cant_find', function () {
+    socket.emit('new_game', {
+        game: gameName
+    });
+});
+
+socket.emit('find_game', {
+    gameName: gameName,
+    input: Input
 });
 
 new Promise(function(resolve, reject){
     socket.on('ready', function(data){
-        socketID = data.id;
+        gameid = data.id;
+        socketID = data.socket;
         eval('render = '+data.render);
         resolve(data.resources);
     });
@@ -50,18 +58,23 @@ new Promise(function(resolve, reject){
     }
     return Promise.all(ps);
 }).then(function(){
-    socket.emit('loaded', socketID);
+    socket.emit('loaded', {
+        id: gameid,
+        socket: socketID,
+        input: Input
+    });
 });
 
 socket.on('error', function(msg){
     console.error(msg);
 });
 
-socket.on('state', function(state){
-    render(Canvas, state, resources);
+socket.on('state', function(info){
+    render(Canvas, info.state, resources, info.player);
     socket.emit('input', {
-        id: socketID,
-        input: Input
+        id: gameid,
+        input: Input,
+        socket: socket.id
     });
 });
 

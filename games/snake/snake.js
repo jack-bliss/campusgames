@@ -172,7 +172,7 @@ const Snake = {
         }
     },
     // update is a function that takes the previous state of the game, input form the user, and the time step
-    update: function(s, input, dt){
+    update: function(s, inputs, dt){
         let state = Object.assign({}, s);
         const dirs = {
             up: 1,
@@ -184,7 +184,7 @@ const Snake = {
             state.frameCounter[0]++;
 
             for(let d in dirs){
-                if(input[d] && state.snake.dir !== Snake.util.rotateFour(dirs[d])){
+                if(inputs[0][d] && state.snake.dir !== Snake.util.rotateFour(dirs[d])){
                     state.snake.nextDir = dirs[d];
                 }
             }
@@ -306,11 +306,11 @@ const Snake = {
 
             }
         } else if(state.at === 'ready'){
-            if(input.space){
+            if(inputs[0].space){
                 state.at = 'play';
             }
         } else if(state.at === 'dead'){
-            if(input.space){
+            if(inputs[0].space){
                 state = Snake.setup();
                 state.at = 'play';
             }
