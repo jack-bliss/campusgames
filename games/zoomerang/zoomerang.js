@@ -36,11 +36,11 @@ var Zoomerang = {
             click_counter: 0
         }
     },
-    update: function(state, input, dt, KS){
+    update: function(state, inputs, dt, KS){
         var s = Object.assign({}, state);
 
         // state progression
-        if((s.at === 'start' || s.at === 'retry') && input.space){
+        if((s.at === 'start' || s.at === 'retry') && inputs[0].space){
 
             s.score = 0;
             s.round = 1;
@@ -53,7 +53,7 @@ var Zoomerang = {
 
         } else if(s.at === 'aiming'){
 
-            if(input.space && s.prevSpace === false){
+            if(inputs[0].space && s.prevSpace === false){
                 s.at = 'throwing';
             }
 
@@ -69,7 +69,7 @@ var Zoomerang = {
                 var bclass = Zoomerang.resources.static.buttons[btype];
                 for(var bname in bclass.sub){
                     var button = bclass.sub[bname];
-                    var PIS = KS.pointInShape(input.mouse, {
+                    var PIS = KS.pointInShape(inputs[0].mouse, {
                         x: button.x + bclass.x,
                         y: button.y + bclass.y,
                         w: button.w,
@@ -77,10 +77,10 @@ var Zoomerang = {
                     });
                     if(PIS){
                         s.buttonHover = btype+"_"+bname;
-                        if(input.mouse.click && s.prevMouse){
+                        if(inputs[0].mouse.click && s.prevMouse){
                             s.click_counter++;
                         }
-                        if(input.mouse.click && !s.prevMouse || input.mouse.click && s.click_counter === 8){
+                        if(inputs[0].mouse.click && !s.prevMouse || inputs[0].mouse.click && s.click_counter === 8){
                             var parts = button.click.split("|");
                             if(parts[1] === 'up'){
                                 s.aim[parts[0]]++;
@@ -188,8 +188,8 @@ var Zoomerang = {
         }
 
         s.prevAt = s.at;
-        s.prevMouse = input.mouse.click;
-        s.prevSpace = input.space;
+        s.prevMouse = inputs[0].mouse.click;
+        s.prevSpace = inputs[0].space;
 
         return s;
     },
